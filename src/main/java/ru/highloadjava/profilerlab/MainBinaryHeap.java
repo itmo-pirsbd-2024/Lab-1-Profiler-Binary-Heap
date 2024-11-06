@@ -13,7 +13,7 @@ public class MainBinaryHeap {
         for (int i = 0; i < size; i++) {
             //binaryHeap.adder(random.nextInt(size));
             lst.add(random.nextInt(size));
-            Thread.sleep(800);;
+            //Thread.sleep(800);;
         }
         binaryHeap.heapSort(lst, lst.size());
         String res = lst.toString();

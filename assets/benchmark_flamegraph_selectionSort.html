@@ -14,7 +14,7 @@
 	#status {left: 0}
 	#match {right: 0}
 	#reset {cursor: pointer}
-	#canvas {width: 100%; height: 624px}
+	#canvas {width: 100%; height: 544px}
 </style>
 </head>
 <body style='font: 12px Verdana, sans-serif'>
@@ -32,7 +32,7 @@
 	let root, rootLevel, px, pattern;
 	let level0 = 0, left0 = 0, width0 = 0;
 	let reverse = false;
-	const levels = Array(39);
+	const levels = Array(34);
 	for (let h = 0; h < levels.length; h++) {
 		levels[h] = [];
 	}
@@ -251,165 +251,300 @@
 
 const cpool = [
 'all',
-' ConcurrentGCThread::run',
-' G1ServiceThread::run_service',
+' C2Compiler::compile_method',
+'!ompile::Code_Gen',
+'+mpile',
+')Optimize',
+'\'Broker::compiler_thread_loop',
+'/invoke_compiler_on_method',
+'"nvI2LNode::Value',
+' Dict::Insert',
+' G1CollectedHeap::attempt_allocation_slow',
+'1mem_allocate',
+'1retire_mutator_alloc_region',
+')ionSet::add_eden_region',
+' InstanceKlass::allocate_objArray',
+' JavaThread::run',
+' MemAllocator::allocate',
+'!utatorAllocRegion::retire',
+' Node::Node',
+'&replace_edge',
+' ObjArrayAllocator::initialize',
+'!ptoRuntime::new_array_C',
+' PhaseChaitin::Register_Allocate',
+'.Split',
+'.get_spillcopy_wide',
+'.split_USE',
+'%IdealLoop::optimize',
+'&terGVN::optimize',
+'.remove_globally_dead_node',
+'.subsume_node',
+'.transform_old',
 ' Thread::call_run',
-' WatcherThread::run',
-'/sleep',
+'!ype::hashcons',
+'$ArrayKlass::allocate_common',
+'$Long::eq',
 ' [unknown]',
-' __lock_text_start',
-'"pthread_cond_broadcast',
+' __alloc_pages',
+'"cgroup_throttle_swaprate',
+'"handle_mm_fault',
+'"lock_text_start',
+'"mem_cgroup_charge',
+'"pagevec_lru_add',
+'#te_alloc',
 '"sched_text_start',
 '"x64_sys_futex',
-' do_futex',
+'!raw_spin_lock',
+' alloc_pages',
+'+_vma',
+'!sm_exc_page_fault',
+'$sysvec_apic_timer_interrupt',
+' call_timer_fn',
+'!harge_memcg',
+'!lear_page_rep',
+' do_anonymous_page',
+'#futex',
 '#syscall_64',
+'#user_addr_fault',
 ' entry_SYSCALL_64_after_hwframe',
+'!xc_page_fault',
 ' finish_task_switch',
 '!utex_wait',
 '*_queue_me',
-'(ke',
-' java/lang/AbstractStringBuilder.append',
-'@ensureCapacityInternal',
-'*Math.min',
-'*StringBuilder.append',
-'*invoke/BootstrapMethodInvoker.invoke',
-'3undMethodHandle$Species_L.copyWithExtendL',
-'LL.<init>',
-'Nmake',
-'B.<init>',
-'CbindArgumentL',
-'1CallSite.makeSite',
-'1DelegatingMethodHandle$Holder.delegate',
-'2irectMethodHandle$Holder.invokeStatic',
-'C.make',
-'HPreparedLambdaForm',
-'DpreparedLambdaForm',
-'1InvokerBytecodeGenerator.addMethod',
-'JgenerateCustomizedCode',
-'`Bytes',
-'JmethodPrologue',
-'8s$Holder.invokeExact_MT',
-'1LambdaForm.compileToBytecode',
-'<prepare',
-';Editor.bindArgumentL',
-'1MethodHandle.<init>',
-'=Natives.linkCallSite',
-'QImpl',
-'IMethodHandleConstant',
-'=s$Lookup.getDirectMethodCommon',
-'UForConstant',
-'UNoSecurityManager',
-'FlinkMethodHandleConstant',
-'>.insertArguments',
-'7Type.toMethodDescriptorString',
-'1StringConcatFactory$2.apply',
-'D.generateMHInlineCopy',
-'EmakeConcatWithConstants',
-'Eprepender',
-'%util/Arrays.copyOf',
-'*concurrent/ConcurrentHashMap.computeIfAbsent',
-' pthread_cond_timedwait@@GLIBC_2.3.2',
-' ru/highloadjava/profilerlab/RandomizedQuickSort.main',
-'<Utils.printArray',
+' get_mem_cgroup_from_mm',
+'$page_from_freelist',
+' handle_mm_fault',
+'\'softirqs',
+' io_watchdog_func',
+'!rq_exit_rcu',
+' java/lang/Integer.intValue',
+'*Thread.run',
+'*reflect/Method.invoke',
+'%util/ArrayList.<init>',
+'4elementData',
+'4get',
+'4toArray',
+'/s.copyOf',
+'*concurrent/Executors$RunnableAdapter.call',
+'5FutureTask.run',
+'5ThreadPoolExecutor$Worker.run',
+'G.runWorker',
+'!dk/internal/reflect/DelegatingMethodAccessorImpl.invoke',
+'5NativeMethodAccessorImpl.invoke',
+'T0',
+'!int_disjoint_arraycopy',
+' lru_cache_add',
+'-_inactive_or_unevictable',
+' org/openjdk/jmh/infra/Blackhole.consume',
+'0runner/BenchmarkHandler$BenchmarkTask.call',
+' prep_new_page',
+'!te_alloc_one',
+'"hread_cond_timedwait@@GLIBC_2.3.2',
+'!ud_offset.isra.0',
+' ru/highloadjava/profilerlab/SelectionSort.selectionSort',
+'<Utils.convertListToArray',
+'Bswap',
+'<benchmarks/BinaryHeapBenchmark.benchmarkSelectionSort',
+'Gjmh_generated/BinaryHeapBenchmark_benchmarkSelectionSort_jmhTest.benchmarkSelectionSort_AverageTime',
+'_jmhTest.benchmarkSelectionSort_avgt_jmhStub',
+'"n_timer_softirq',
 ' schedule',
 '!tart_thread',
-'!un/invoke/util/BytecodeDescriptor.unparseMethod',
-'JSig',
+'!ysvec_apic_timer_interrupt',
 ' thread_native_entry',
-'!ry_to_wake_up',
-' wake_up_q',
 ' x64_sys_call'
 ];
 unpack(cpool);
 
-n(3,8)
-u(51,3)
-u(467)
-u(109)
-u(101)
-u(549)
-u(85)
-u(93)
-u(125)
-u(133)
+n(3,4124)
+u(275,1)
+u(715)
+u(453)
+u(437)
+u(821)
+u(349)
+u(429)
+u(477)
+u(485)
+u(789)
+u(341)
+u(469)
+f(545,1,1,4120)
+u(617)
+u(625)
+u(609)
+u(601)
+u(609)
+u(689)
+u(689)
+u(553)
+u(633)
+u(641)
+u(649)
+u(761)
+u(769,4120,0,1,0)
+f(164,15,2,4)
+u(260)
+u(124)
+u(84,1)
+u(132)
+f(156,18,1,3)
+u(381)
+u(461)
+u(445)
+u(509)
+u(301)
+u(421)
+u(333)
+u(709)
+u(365)
+u(285)
+u(501)
+u(701)
+u(413)
+f(754,15,3,4114,1902,0,0)
+u(562,348,330,0,0)
+f(164,17,6,2)
+u(108)
+u(124)
+u(156)
+u(381)
+u(461)
+u(445)
+u(509)
+u(301)
+u(421)
+u(333)
+u(709)
+u(365)
+u(285)
+u(501)
+u(701)
+u(413)
+f(586,17,2,340)
+u(594)
+f(659,19,309,31)
+f(381,20,7,24)
+u(461)
+u(445)
+f(509,23,10,14)
+f(301,24,1,12)
+u(293,1)
+n(357)
+n(421,9)
+u(293,1)
+n(317)
 u(493)
-u(77)
-u(117)
-f(67,1,3,1)
-u(109)
-u(101)
-u(549)
-u(85)
-u(93)
-u(141)
-u(541)
+f(333,26,1)
+u(709)
+u(365)
+u(285)
+u(501)
+u(701)
+u(413)
+f(373,26,1,6)
+u(285)
+u(501)
+u(701)
+u(413)
+f(677,25,6,1)
+f(725,24,1)
+f(682,16,1)
+n(730,3722,1752,0,0)
+f(389,17,3693,6)
+u(805)
 u(533)
-u(61)
-f(473,1,1,2)
-u(481)
-u(345,1)
-u(353)
-u(225)
-u(177)
-u(305)
-u(233)
-u(241)
-u(433)
-u(425)
-u(441)
-u(457)
-u(417)
-u(417)
-u(401)
-u(217)
-u(329)
-u(185)
-u(241)
-u(201)
-u(193)
-u(209)
-u(337)
-u(321)
-u(313)
-u(281)
-u(289)
-u(273)
-u(297)
-u(409)
-u(505)
-u(513)
-u(169)
-u(145)
-u(153)
-u(449)
-u(160)
-f(361,3,1)
-u(393)
-u(377)
-u(385)
-u(369)
-u(249)
-u(265)
-u(265)
-u(265)
-u(257)
-u(67)
-u(109)
-u(101)
-u(549)
-u(85)
-u(93)
-u(141)
-u(541)
-u(533)
-u(61)
-f(499,1,1,2)
-u(524)
-u(28)
-u(12,1)
-u(20)
-f(36,4,1)
+u(517)
+f(781,21,4,2)
+u(397)
+u(525)
+u(309)
+f(746,17,2,23)
+f(738,16,23,43,25,0,0)
+f(164,17,10,2)
+u(108,1)
+u(124)
+u(156)
+u(381)
+u(461)
+u(445)
+u(509)
+u(301)
+u(421)
+u(333)
+u(709)
+u(365)
+u(285)
+u(501)
+u(701)
+u(413)
+f(260,18,1)
+u(124)
+u(84)
+u(76)
+u(132)
+u(92)
+u(100)
+f(381,17,1,25)
+u(461)
+u(445)
+f(509,20,10,15)
+f(301,21,1,14)
+u(357,2)
+n(421,12)
+u(317,3)
+u(405,2)
+n(493,1)
+f(333,23,1)
+u(709)
+u(365)
+u(285)
+u(501)
+u(701)
+u(413)
+f(373,23,1,7)
+u(285)
+f(501,25,1,6)
+u(701)
+u(413)
+f(677,23,6,1)
+u(669)
+u(325)
+u(309)
+f(538,17,1)
+n(578,4)
+u(570)
+f(659,17,4,1)
+u(381)
+u(461)
+u(445)
+f(795,1,1,3)
+u(812)
+u(244)
+u(116)
 u(44)
+u(52)
+u(12)
+u(28)
+u(20,1)
+u(172)
+u(180)
+u(196)
+u(188)
+u(140)
+f(36,9,1,2)
+u(204,1)
+u(212)
+u(236)
+u(60)
+u(252)
+u(68)
+u(268)
+f(212,10,1)
+u(236)
+u(228)
+u(220)
+u(148)
 
 search();
 </script></body></html>

@@ -11,40 +11,36 @@
 
 ## Результаты бенчмарка сравнения алгоритма сортировки в куче с классическими алгоритмами
 * Результаты бенчмарка сравнения алгоритмов сортировки и бинарной кучи
-![compare_binary_heap_and_sorts.png](src/main/resources/imgs/compare_binary_heap_and_sorts.png)
 
-По результатам видим, что сортировка вставкой InsertionSort отработал быстрее всего,
-чуть медленнее это сделали QuickSort(быстрая сортировка) и HeapSort (сортировка кучей).
+Как  мы видим наиболее хорошо с росто числа элементов чувствует себя RandomizedQuickSort и heapSort 
+![compare_sort_algorithms.png](assets/compare_sort_algorithms.png)
 
-Очень медленно работает сортировка выбором (SelectionSort).
+Как  мы видим наиболее хорошо с росто числа элементов чувствует себя RandomizedQuickSort и heapSort
 
 
-Также обратим внимание, что поиск элемента в обычном списке и в куче происходит за сопоставимое время.
+Также обратим внимание, что поиск элемента  в куче происходит быстрее.
 
 ## Результаты профилирования алгоритмов сортировок
 
-Продемонстрируем flamegraph алгоритмов сортировок. Предварительно в коде для того, чтобы можно было захватить класс профайлером,
-создана задержка потока выполнения.
+Продемонстрируем flamegraph алгоритмов сортировок.
 
 * Insertion sort flamegraph
-![flamegraph_insertionSort.png](src/main/resources/imgs/flamegraph_insertionSort.png)
+![benchmark_flamegraph_insertionSort.png](assets/benchmark_flamegraph_insertionSort.png)
 
 
 * Selection sort flamegraph
-![flamegraph_selectionSort.png](src/main/resources/imgs/flamegraph_selectionSort.png)
+![benchmark_flamegraph_selectionSort.png](assets/benchmark_flamegraph_selectionSort.png)
 
 
 * Randomized quick sort flamegraph
-![flamegraph_quickSort.png](src/main/resources/imgs/flamegraph_quickSort.png)
+Виден рекурсивный характер алгоритма
+![benchmark_flamegraph_randomizedQuickSort.png](assets/benchmark_flamegraph_randomizedQuickSort.png)
 
 
 * Heap sort flamegraph
-![flamegraph_heapSort.png](src/main/resources/imgs/flamegraph_heapSort.png)
+![benchmark_flamegraph_heapsort.png](assets/benchmark_flamegraph_heapsort.png)
 
-## Результаты профилирования jmh
-На примере SelectionSort flamegraph jmh
-![benchmark_profiler_example.png](src/main/resources/imgs/benchmark_profiler_example.png)
 
 ## Динамический вывод JIT при профилировании JMH
 Пример фрагмента вывода (видно как инициализируется объект)
-![jmh_JIT_example.png](src/main/resources/imgs/jmh_JIT_example.png)
+![jmh_JIT_example.png](assets/jmh_JIT_example.png)

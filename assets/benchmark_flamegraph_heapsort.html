@@ -14,7 +14,7 @@
 	#status {left: 0}
 	#match {right: 0}
 	#reset {cursor: pointer}
-	#canvas {width: 100%; height: 480px}
+	#canvas {width: 100%; height: 528px}
 </style>
 </head>
 <body style='font: 12px Verdana, sans-serif'>
@@ -32,7 +32,7 @@
 	let root, rootLevel, px, pattern;
 	let level0 = 0, left0 = 0, width0 = 0;
 	let reverse = false;
-	const levels = Array(30);
+	const levels = Array(33);
 	for (let h = 0; h < levels.length; h++) {
 		levels[h] = [];
 	}
@@ -251,81 +251,57 @@
 
 const cpool = [
 'all',
-' AllocTracer::send_allocation_in_new_tlab',
-' C2Compiler::compile_method',
-'!ompile::Compile',
-')Optimize',
-'\'Broker::compiler_thread_loop',
-'/invoke_compiler_on_method',
-' G1AdjustRegionClosure::do_heap_region',
-'"CollectedHeap::do_full_collection',
-'$ncurrentMark::clear_bitmap',
-'8next_bitmap',
-'"FullCollector::collect',
-'3mplete_collection',
-'1phase1_mark_live_objects',
-'&GCAdjustTask::work',
-'(MarkTask::work',
-',er::complete_marking',
-'!angWorker::loop',
-',run',
-' HeapRegionManager::par_iterate',
-' InstanceKlass::allocate_objArray',
-' JavaThread::run',
+' G1CardTable::is_in_young',
+'#ollectedHeap::attempt_allocation_slow',
+'1mem_allocate',
+'1unsafe_max_tlab_alloc',
+'$mmittedRegionMap::num_active',
+'"MonitoringSupport::update_eden_size',
 ' MemAllocator::allocate',
+'!utatorAllocRegion::retire',
 ' OptoRuntime::new_array_C',
-' PhaseIdealLoop::optimize',
-'&terGVN::optimize',
-' SpinPause',
-' Thread::call_run',
-' VMThread::evaluate_operation',
-'*inner_execute',
-'*run',
-'"_G1CollectFull::doit',
-'#Operation::evaluate',
-' WorkGang::run_task',
-' [unknown]',
-' __alloc_pages',
+'1instance_C',
+' TypeArrayKlass::allocate_common',
+' [not_walkable_Java]',
+'!unknown]',
+' __GI___pthread_mutex_trylock',
+'"alloc_pages',
 '"handle_mm_fault',
 '"lock_text_start',
+'"mem_cgroup_charge',
+'%set_sse2_unaligned_erms',
 '"pagevec_lru_add',
 '"sched_text_start',
-'"wake_up',
-')_common_lock',
 '"x64_sys_futex',
-'*openat',
 ' alloc_pages_vma',
 '!sm_exc_page_fault',
 '$sysvec_apic_timer_interrupt',
 '+call_function_single',
+' charge_memcg',
+'!lear_page_rep',
 ' do_anonymous_page',
-'#filp_open',
-'$utex',
-'#sys_open',
-'+at2',
-'&call_64',
+'#futex',
+'#syscall_64',
 '#user_addr_fault',
 ' entry_SYSCALL_64_after_hwframe',
 '!xc_page_fault',
 '"it_to_user_mode_prepare',
 ' finish_task_switch',
-'!snotify',
-'(_handle_inode_event.isra.0',
-')insert_event',
-'!utex_wake',
+'!utex_wait',
+'*_queue_me',
 ' get_page_from_freelist',
 ' handle_mm_fault',
-' inotify_handle_inode_event',
-'!rqentry_exit',
+'\'softirqs',
+' irq_exit_rcu',
+'#entry_exit',
 '-_to_user_mode',
-' java/lang/Integer.intValue',
-'*Thread.run',
+' java/lang/Thread.run',
 '*reflect/Method.invoke',
 '%util/ArrayList.<init>',
-'4elementData',
 '4get',
 '4toArray',
 '/s.copyOf',
+'*Objects.checkIndex',
 '*concurrent/Executors$RunnableAdapter.call',
 '5FutureTask.run',
 '5ThreadPoolExecutor$Worker.run',
@@ -334,176 +310,176 @@ const cpool = [
 '5NativeMethodAccessorImpl.invoke',
 'T0',
 '!int_disjoint_arraycopy',
+' kernel_init_free_pages.part.0',
 ' lru_cache_add',
 '-_inactive_or_unevictable',
-' open',
-'!rg/openjdk/jmh/runner/BenchmarkHandler$BenchmarkTask.call',
-' path_openat',
-'!md_val',
-' rmqueue',
-'!u/highloadjava/profilerlab/SelectionSort.selectionSort',
+' org/openjdk/jmh/runner/BenchmarkHandler$BenchmarkTask.call',
+' prep_new_page',
+'!thread_cond_timedwait@@GLIBC_2.3.2',
+' rcu_core',
+'(_si',
+'$gp_kthread_wake',
+'$report_qs_rnp',
+'!mqueue',
+'!u/highloadjava/profilerlab/BinaryHeap.heapFromArray',
+'KSort',
+'GsortOurHeap',
 '<Utils.convertListToArray',
-'Bswap',
-'<benchmarks/BinaryHeapBenchmark.benchmarkSelectionSort',
-'Gjmh_generated/BinaryHeapBenchmark_benchmarkSelectionSort_jmhTest.benchmarkSelectionSort_AverageTime',
-'_jmhTest.benchmarkSelectionSort_avgt_jmhStub',
+'<benchmarks/BinaryHeapBenchmark.heapSort',
+'Gjmh_generated/BinaryHeapBenchmark_heapSort_jmhTest.heapSort_AverageTime',
+'ort_avgt_jmhStub',
 ' schedule',
-'!em_post@@GLIBC_2.2.5',
-'!tart_thread',
+'!wake_up_one',
 '!ysvec_apic_timer_interrupt',
 '\'call_function_single',
-' thread_native_entry',
-'!ry_to_wake_up',
-' void OopOopIterateDispatch<G1AdjustClosure>::Table::oop_oop_iterate<InstanceKlass, narrowOop>',
-' wake_up_q',
 ' x64_sys_call'
 ];
 unpack(cpool);
 
-n(3,3598)
-u(275,1)
-u(691)
-u(445)
-u(429)
-u(853)
-u(349)
-u(413)
-u(421)
-u(397)
-u(709)
-u(477)
-u(485)
-u(525)
-u(493)
-u(325)
-u(333)
+n(3,3515)
+u(99,1)
+u(84)
+u(12)
+f(107,1,1)
+u(523)
+u(269)
+u(253)
+u(661)
+u(181)
+u(245)
 u(301)
-f(553,1,1,3590)
-u(625)
-u(633)
-u(617)
+u(309)
+u(629)
+u(173)
+u(293)
+f(361,1,1,3513)
+u(433)
+u(441)
+u(425)
+u(417)
+u(425)
+u(505)
+u(505)
+u(369)
+u(449)
+u(457)
+u(465)
 u(609)
 u(617)
-u(697)
-u(697)
-u(561)
-u(641)
-u(649)
-u(657)
-u(761)
-u(769)
-u(753,3590,0,0,1)
-f(570,16,1,147)
-f(594,17,3,144)
-u(602)
-f(667,19,139,5)
-f(365,20,2,3)
-u(453)
-u(437)
-f(517,23,2,1)
-u(293)
-u(389)
+f(76,15,2,5)
+u(92)
+u(60)
+f(28,18,1,2)
+u(20)
+u(68,1)
+u(52)
+u(44)
+f(115,20,1)
+f(36,18,1)
+n(155)
+u(197)
+u(277)
+u(261)
+u(325)
+u(133)
+u(237)
+u(189)
+u(125)
+u(317)
+u(517)
+u(229)
+f(601,15,1,3506,916,0,0)
+u(378,168)
+u(394)
+u(402)
+f(213,19,167,1)
+u(653)
+u(349)
 u(357)
 u(285)
-u(509)
-u(725)
-f(730,16,1,3416,2892,0,0)
-f(373,17,3373,1)
-u(805)
-u(533)
+f(577,16,1,2642,52,0,0)
+f(569,17,28,340,24,0,0)
+f(585,18,24,316)
+f(386,19,21,11)
+u(410)
+f(585,19,11,284)
+f(585,20,226,58)
+f(386,21,1,1)
+u(410)
+f(585,21,1,56)
+f(585,22,38,18)
+f(585,23,3,15)
+f(585,24,14,1)
+f(585,17,1,2274)
+f(386,18,24,2)
+u(410)
+f(585,18,2,2248)
+f(205,19,575,1)
+u(645)
+u(341)
+u(333)
+f(585,19,1,1672)
+f(386,20,17,1)
+u(410)
+f(585,20,1,1654)
+f(585,21,558,1096)
+f(386,22,17,2)
+u(410)
+f(585,22,2,1077)
+f(205,23,524,1)
+u(645)
+u(341)
+u(333)
 u(541)
-u(461)
-u(781)
+u(533)
+u(557)
+u(549)
+u(637)
+u(141)
+f(585,23,1,552)
+f(386,24,20,9)
+u(410)
+f(585,24,9,523)
+f(585,25,448,75)
+f(386,26,14,5)
+u(410)
+f(585,26,5,56)
+f(594,16,56,696)
+f(197,17,40,300)
+u(277)
+u(261)
+f(325,20,3,297)
+u(133)
+f(237,22,1,296)
+f(189,23,1,294)
+u(125)
 u(317)
-u(469)
-f(381,17,1)
-u(813)
-u(533)
-u(541)
-u(461)
-f(746,17,1,41)
-f(738,16,41,26,20,0,0)
-f(188,17,14,1)
-u(164)
-u(180)
-u(12)
-f(365,17,1,3)
-u(453)
-u(437)
-f(517,20,1,2)
-u(293)
-u(389)
-u(685,1)
-u(677)
-u(309)
-u(301)
-f(717,23,1)
-f(546,17,1)
-n(586,7)
-u(578)
-f(795,1,7)
-u(820)
-u(220)
-u(148,4)
-u(140)
-u(116,1)
-u(156)
-u(60)
-u(836)
-f(124,6,1)
-u(132)
-u(211)
-f(787,6,1,2)
-u(445)
-u(429)
-u(853)
-u(341)
-u(405)
-u(501)
-u(845)
-u(829)
-u(301)
-f(172,4,2,1)
-u(44)
-u(52)
-u(20)
-u(28)
-u(36)
-u(196)
-u(204)
-f(244,4,1,2)
-u(236)
-u(228)
-u(260)
-u(252)
-u(68)
-u(92,1)
-u(108)
-u(268)
-u(787)
-u(445)
-u(429)
-u(853)
-u(341)
-u(405)
-u(501)
-u(845)
-u(829)
-u(301)
-f(100,10,1)
-u(84)
-u(76)
-u(268)
-u(787)
-u(445)
-u(429)
-u(853)
-u(341)
-u(405)
-u(501)
-u(845)
-u(829)
-u(301)
+u(517)
+u(229,293)
+n(485,1)
+f(501,23,1)
+u(493)
+u(165)
+u(141)
+f(475,17,1,356)
+f(197,18,16,340)
+u(277)
+u(261)
+f(325,21,4,336)
+f(133,22,1,335)
+u(237)
+u(149,1)
+u(221)
+f(189,24,1,333)
+u(125)
+u(317)
+u(517,327)
+u(229)
+f(565,27,327,6)
+f(501,24,6,1)
+u(493)
+u(165)
+u(141)
 
 search();
 </script></body></html>

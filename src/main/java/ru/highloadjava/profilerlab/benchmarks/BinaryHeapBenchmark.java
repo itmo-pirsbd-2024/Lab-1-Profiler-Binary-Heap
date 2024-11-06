@@ -22,11 +22,11 @@ import java.util.concurrent.TimeUnit;
 public class BinaryHeapBenchmark {
 
 
-    @Param({"1000"})
-    private static int size;
+    @Param({"1000", "100000"})
+    private int size;
 
     private List<Integer> list = new ArrayList<>();
-    private Random random = new Random();
+    private Random random = new Random(1234L);
 
     private BinaryHeap binaryHeap = new BinaryHeap();
 
@@ -47,7 +47,7 @@ public class BinaryHeapBenchmark {
                 .include(BinaryHeapBenchmark.class.getSimpleName())
                 .forks(1)
                 .jvmArgs("-Xms4G", "-Xmx8G", "-XX:+UnlockDiagnosticVMOptions",
-                "-XX:+PrintCompilation", "-XX:+PrintInlining",
+                //"-XX:+PrintCompilation", "-XX:+PrintInlining",
                 "-Djmh.stack.profiles=true")  // Включение профилирования стека  // Включение профилирования стека
                 .build();
 
@@ -63,10 +63,10 @@ public class BinaryHeapBenchmark {
         }
     }
 
-    @TearDown(Level.Iteration)
-    public void teardown() {
-        System.gc();
-    }
+    //@TearDown(Level.Iteration)
+    //public void teardown() {
+        //System.gc();
+    //}
 
     // Бенчмарк для вставки в BinaryHeap
     @Benchmark
@@ -81,9 +81,10 @@ public class BinaryHeapBenchmark {
     // Бенчмарк для поиска в BinaryHeap
     @Benchmark
     public void searchInBinaryHeap(Blackhole bh) {
-        for (int i = 0; i < size; i++) {
-            expectedBinaryHeap.contains(list.get(random.nextInt(size)));
-        }
+        //for (int i = 0; i < size; i++) {
+        //    expectedBinaryHeap.contains(list.get(random.nextInt(size)));
+        //}
+        expectedBinaryHeap.contains(list.get(random.nextInt(size)));
         bh.consume(expectedBinaryHeap);
     }
 
@@ -111,45 +112,61 @@ public class BinaryHeapBenchmark {
     @Benchmark
     public void heapSort(Blackhole bh) {
         BinaryHeap binaryHeap = new BinaryHeap();
-        for (int i = 0; i < size; i++) {
+        /*for (int i = 0; i < size; i++) {
             List<Integer> copyList = new ArrayList<>(list); // Создаем копию списка
             int[] array = Utils.convertListToArray(copyList); // Преобразование списка в массив ()
             binaryHeap.heapSort(copyList, copyList.size());
             bh.consume(copyList);
-        }
+        }*/
+        List<Integer> copyList = new ArrayList<>(list); // Создаем копию списка
+        int[] array = Utils.convertListToArray(copyList); // Преобразование списка в массив ()
+        binaryHeap.heapSort(copyList, copyList.size());
+        bh.consume(copyList);
     }
 
     // Бенчмарк для RandomizedQuickSort
     @Benchmark
     public void benchmarkRandomizedQuickSort(Blackhole bh) {
-        for (int i = 0; i < size; i++) {
+        /*for (int i = 0; i < size; i++) {
             List<Integer> copyList = new ArrayList<>(list); // Создаем копию списка
             int[] array = Utils.convertListToArray(copyList); // Преобразование списка в массив
             quickSort.randomizedQuickSort(array, 0, array.length - 1);
             bh.consume(array);
-        }
+        }*/
+        List<Integer> copyList = new ArrayList<>(list); // Создаем копию списка
+        int[] array = Utils.convertListToArray(copyList); // Преобразование списка в массив
+        quickSort.randomizedQuickSort(array, 0, array.length - 1);
+        bh.consume(array);
     }
 
     // Бенчмарк для InsertionSort
     @Benchmark
     public void benchmarkInsertionSort(Blackhole bh) {
-        for (int i = 0; i < size; i++) {
+        /*for (int i = 0; i < size; i++) {
             List<Integer> copyList = new ArrayList<>(list); // Создаем копию списка
             int[] array = Utils.convertListToArray(copyList); // Преобразование списка в массив
             insertionSort.insertionSort(array);
             bh.consume(array);
-        }
+        }*/
+        List<Integer> copyList = new ArrayList<>(list); // Создаем копию списка
+        int[] array = Utils.convertListToArray(copyList); // Преобразование списка в массив
+        insertionSort.insertionSort(array);
+        bh.consume(array);
     }
 
     // Бенчмарк для SelectionSort
     @Benchmark
     public void benchmarkSelectionSort(Blackhole bh) {
-        for (int i = 0; i < size; i++) {
+        /*for (int i = 0; i < size; i++) {
             List<Integer> copyList = new ArrayList<>(list); // Создаем копию списка
             int[] array = Utils.convertListToArray(copyList); // Преобразование списка в массив
             selectionSort.selectionSort(array);
             bh.consume(array);
-        }
+        }*/
+        List<Integer> copyList = new ArrayList<>(list); // Создаем копию списка
+        int[] array = Utils.convertListToArray(copyList); // Преобразование списка в массив
+        selectionSort.selectionSort(array);
+        bh.consume(array);
     }
 
 }

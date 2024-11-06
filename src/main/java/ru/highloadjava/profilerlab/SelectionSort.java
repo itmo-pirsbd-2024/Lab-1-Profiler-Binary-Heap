@@ -23,7 +23,7 @@ public class SelectionSort {
         Random random = new Random();
         for (int i = 0; i < N; i++) {
             arr[i] = random.nextInt(100);
-            Thread.sleep(800);;
+            //Thread.sleep(800);;
         }
         Utils.printArray(arr);
         System.out.println();
